@@ -1,3 +1,4 @@
+
 class UserRepository:
     def __init__(self):
         self.users = []
@@ -16,6 +17,19 @@ class UserRepository:
         for user in self.users:
             print(f"Username: {user.username}, Email: {user.email}")
         return self.users
+
+    def create_collection(self, game):
+        self.collections.append(game)
+
+    @staticmethod
+    def write_post(title, description):
+        return Post(title, description)
+
+    @staticmethod
+    def write_comment(post, text):
+        comment = Comment(text)
+        post.add_comment(comment)
+        return comment
 
 
 class CollectionRepository:
