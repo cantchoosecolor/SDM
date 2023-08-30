@@ -1,4 +1,6 @@
 import datetime
+from dataclasses import dataclass
+import sqlalchemy as sa
 
 
 class User:
@@ -12,10 +14,12 @@ class User:
     def create_collection(self, game):
         self.collections.append(game)
 
-    def write_post(self, title, description):
+    @staticmethod
+    def write_post(title, description):
         return Post(title, description)
 
-    def write_comment(self, post, text):
+    @staticmethod
+    def write_comment(post, text):
         comment = Comment(text)
         post.add_comment(comment)
         return comment
