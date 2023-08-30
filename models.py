@@ -1,5 +1,6 @@
 import datetime
 from dataclasses import dataclass
+import sqlalchemy as sa
 
 
 class User:
@@ -9,6 +10,20 @@ class User:
         self.email = email
         self.password = password
         self.friends = []
+
+
+    def create_collection(self, game):
+        self.collections.append(game)
+
+    @staticmethod
+    def write_post(title, description):
+        return Post(title, description)
+
+    @staticmethod
+    def write_comment(post, text):
+        comment = Comment(text)
+        post.add_comment(comment)
+        return comment
 
     def __eq__(self, other):
         if isinstance(other, User):

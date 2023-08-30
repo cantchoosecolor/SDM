@@ -208,7 +208,8 @@ class GameSearchRepository:
                     game.processor.name == processor_name]
         else:
             return [game for game in self.games if
-                    game.processor.name == processor_name and game.processor.rating >= min_rating]
+                    game.processor.name == processor_name and
+                    game.processor.rating >= min_rating]
 
     def search_by_graphics_card(self, graphics_card_name, min_rating=None):
         if min_rating is None:
@@ -216,7 +217,8 @@ class GameSearchRepository:
                     game.graphics_card.name == graphics_card_name]
         else:
             return [game for game in self.games if
-                    game.graphics_card.name == graphics_card_name and game.graphics_card.rating >= min_rating]
+                    game.graphics_card.name == graphics_card_name and
+                    game.graphics_card.rating >= min_rating]
 
     def search_by_operating_system(self, os_name, min_rating=None):
         if min_rating is None:
@@ -224,7 +226,8 @@ class GameSearchRepository:
                     game.operating_system.name == os_name]
         else:
             return [game for game in self.games if
-                    game.operating_system.name == os_name and game.operating_system.rating >= min_rating]
+                    game.operating_system.name == os_name and
+                    game.operating_system.rating >= min_rating]
 
 
 
