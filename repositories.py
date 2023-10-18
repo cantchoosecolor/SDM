@@ -202,8 +202,9 @@ class UserXMLRepository:
 
 
 class CollectionXMLRepository:
-    def __init__(self, tree):
+    def __init__(self, tree, game_repository = GameXMLRepository):
         self.root = tree.getroot()
+        self.game_repository = game_repository
 
     def add_collection(self, collection: Collection):
         collections_node = self.root.find('./collections')
@@ -231,8 +232,9 @@ class CollectionXMLRepository:
 
 
 class PostXMLRepository:
-    def __init__(self, tree):
+    def __init__(self, tree, user_repository = UserXMLRepository):
         self.root = tree.getroot()
+        self.user_repository = user_repository
 
     def add_post(self, post: Post):
         posts_node = self.root.find('./posts')
@@ -260,8 +262,11 @@ class PostXMLRepository:
 
 
 class CommentXMLRepository:
-    def __init__(self, tree):
+    def __init__(self, tree, user_repository = UserXMLRepository,
+                 post_repository = PostXMLRepository):
         self.root = tree.getroot()
+        self.user_repository = user_repository
+        self.post_repository = post_repository
 
     def add_comment(self, comment: Comment):
         comments_node = self.root.find('./comments')
@@ -289,8 +294,15 @@ class CommentXMLRepository:
 
 
 class GameXMLRepository:
-    def __init__(self, tree):
+    def __init__(self, tree, developer_repository = DeveloperXMLRepository,
+                 os_repository = OperatingSystemXMLRepository,
+                 processor_repository = ProcessorXMLRepository,
+                 graphics_card_repository = GraphicsCardXMLRepository):
         self.root = tree.getroot()
+        self.developer_repository =developer_repository
+        self.os_repository =os_repository
+        self.processor_repository =processor_repository
+        self.graphics_card_repository = graphics_card_repository
 
     def add_game(self, game: Game):
         games_node = self.root.find('./games')
